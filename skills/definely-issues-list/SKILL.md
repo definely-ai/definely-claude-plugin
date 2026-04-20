@@ -88,69 +88,11 @@ Only apply if the user explicitly asks for it. If they do, add a short line
 in orange beneath the relevant cell:
 `★  Key issue — requires client instruction`
 Do not add flags unless asked. Use orange sparingly.
- 
 ---
- 
-## Brand & design
- 
-Apply these settings exactly — do not deviate:
- 
-| Token | Value |
-|-------|-------|
-| Navy | `#061131` — document title, column headers background, clause text |
-| Light Blue | `#00A3DA` — accent column header, item numbers, subtitle, page numbers |
-| Orange | `#F76B07` — key issue flag only (sparingly) |
-| Blue Tint 1 | `#F2FAFD` — alternating row background |
-| Blue Tint 2 | `#E5F6FB` — header/footer rule colour |
-| Heading font | Poppins — title, column headers, clause names, document header |
-| Body font | Inter — all body copy, cell content, footer |
-| White | `#FFFFFF` — non-alternating row background, header text |
-| Body text | `#1A2540` — main content colour |
-| Muted text | `#5A6880` — subtitle, footer, instructions line |
-| Border | `#C8E8F5` — all table cell borders |
- 
-**Page:** A4 landscape. Margins: 720 DXA (0.5 in) all sides.
- 
-### Typography — fixed sizes (do not deviate)
- 
-In the `docx` library the `size` property is in **half-points** (1 pt = 2 units).
-The table below is the single source of truth for every text element. Always use
-the exact `size` value listed — never guess or adjust.
- 
-| Element | Font | pt | `size` (half-pt) | Weight | Colour |
-|---------|------|----|-----------------|--------|--------|
-| Page header — document name | Poppins | 11 | 22 | Bold | Navy `#061131` |
-| Page header — date | Inter | 11 | 22 | Regular | Muted `#5A6880` |
-| Page footer — confidentiality text | Inter | 9 | 18 | Italic | Muted `#5A6880` |
-| Page footer — page number | Inter | 9 | 18 | Regular | Light Blue `#00A3DA` |
-| Title block — matter name heading | Poppins | 40 | 80 | Bold | Navy `#061131` |
-| Title block — subtitle (agreement + date) | Poppins | 22 | 44 | Regular | Light Blue `#00A3DA` |
-| Title block — instructions line | Inter | 9 | 17 | Italic | Muted `#5A6880` |
-| Table header row text | Poppins | 10 | 20 | Bold | White `#FFFFFF` |
-| Table data — item number | Poppins | 9 | 18 | Bold | Light Blue `#00A3DA` |
-| Table data — clause reference | Inter | 9 | 18 | Regular | Navy `#061131` |
-| Table data — body / markup text | Inter | 9 | 18 | Regular | Body `#1A2540` |
-| Table data — insertion (blue) | Inter | 9 | 18 | Regular | `#0055CC` |
-| Table data — deletion (red strike) | Inter | 9 | 18 | Regular | `#CC0000` |
-| Table data — bold defined term | Inter | 9 | 18 | Bold | Body `#1A2540` |
-| Key issue flag (if requested) | Inter | 9 | 18 | Regular | Orange `#F76B07` |
- 
-**Header (every page):** Document name left-aligned (Poppins 11pt Bold Navy),
-date right-aligned (Inter 11pt Muted). Separated from body by a Light Blue
-bottom border.
- 
-**Footer (every page):** "Strictly Confidential – Legally Privileged" left
-(Inter 9pt Italic Muted), page number right (Inter 9pt Light Blue).
-Separated from body by a Blue Tint 2 top border.
- 
-**Title block (first page only):**
-- Heading: document/matter name — Poppins Bold 40pt (`size: 80`) Navy
-- Subtitle: agreement name + date — Poppins Regular 22pt (`size: 44`) Light Blue
-- Instructions line: 1-sentence description — Inter Italic 9pt (`size: 17`) Muted
-**Table header row:** Navy background, White Poppins Bold 10pt (`size: 20`) text.
- 
-**Data rows:** alternating White / Blue Tint 1. Body copy Inter 9pt (`size: 18`) `#1A2540`.
- 
+
+## Brand & Design Tokens
+
+Use definely tools to get brand design elements (colours, fonts, badge styles) and apply these exactly in the widget. Do not improvise on the design system or create your own styles.
 ---
  
 ## Output
