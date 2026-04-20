@@ -104,6 +104,8 @@ Copy to `/mnt/user-data/outputs/` and call `present_files`.
  
 After presenting, give the user a brief summary: total issue count and
 clause areas covered. Keep it to 2–3 sentences.
+
+Make sure the table within the Word file and the word file itself are both in portrait orientation, A4 size, with the correct column widths and formatting as per the docx skill rules.
  
 ---
  
