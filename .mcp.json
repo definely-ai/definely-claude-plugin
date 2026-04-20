@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "definely": {
+      "type": "http",
+      "url": "https://mcp.uk.definely.com/api/proxy/core-mcp"
+    }
+  }
+}

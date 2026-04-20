@@ -1,0 +1,12 @@
+{
+  "name": "definely",
+  "version": "1.0.0",
+  "description": "Definely’s MCP server gives AI assistants live access to contract structure—resolving definitions, validating references, mapping dependencies, and tracking how edits propagate—so they can catch inconsistencies and explain impacts clearly.",
+  "author":
+    { "name": "Definely",
+      "url": "https://github.com/definely-ai/definely-claude-plugin"
+    },
+  "repository": "https://github.com/definely-ai/definely-claude-plugin",
+  "keywords": ["legal", "document-analysis", "proofreading", "contracts", "definely"],
+  "license": "Apache-2.0"
+}
