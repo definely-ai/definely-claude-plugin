@@ -7,5 +7,6 @@
       "url": "https://github.com/definely-ai/definely-claude-plugin"
     },
   "repository": "https://github.com/definely-ai/definely-claude-plugin",
-  "keywords": ["legal", "document-analysis", "proofreading", "contracts", "definely"]
+  "keywords": ["legal", "document-analysis", "proofreading", "contracts", "definely"],
+  "license": "Apache-2.0"
 }

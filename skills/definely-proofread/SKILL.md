@@ -75,7 +75,7 @@ Every row gets a **"Fix in doc ↗"** button. On click it calls `sendPrompt()` w
 - **Manual edit issues**: instruct Claude to insert a **Word comment** summarising the problem and suggesting what needs to be done.
 Prompt format for each button:
 ```
-Using the docx skill, <action description> in clause <N> of the document at mounted directory of the file (e.g. /mnt/user-data/uploads/<filename>). Apply as a tracked change authored "Claude". <specific context and fix>.
+Using the docx skill, <action description> in clause <N> of the document at its uploaded path. Apply as a tracked change authored "Claude". <specific context and fix>.
 ```
  
 After a button is clicked, it turns to "Sent ✓" (green) and is disabled.
@@ -88,17 +88,17 @@ When a "Fix in doc ↗" button fires a prompt, follow the docx skill workflow ex
  
 ### Setup (first fix in a conversation)
 ```bash
-cp -r /mnt/skills/public/docx/scripts /home/claude/scripts
-cp /mnt/user-data/uploads/<filename> /home/claude/spa.docx
-python /home/claude/scripts/office/unpack.py /home/claude/spa.docx /home/claude/unpacked/
+cp -r <docx_scripts_dir> <workdir>/scripts
+cp <uploads_dir>/<filename> <workdir>/document.docx
+python <workdir>/scripts/office/unpack.py <workdir>/document.docx <workdir>/unpacked/
 ```
  
 ### For subsequent fixes
-**Do not re-unpack.** The unpacked folder persists. Edit `/home/claude/unpacked/word/document.xml` directly with `str_replace`. All changes accumulate in the same unpacked folder.
+**Do not re-unpack.** The unpacked folder persists. Edit `<workdir>/unpacked/word/document.xml` directly with `str_replace`. All changes accumulate in the same unpacked folder.
  
 ### Finding the text
 ```bash
-grep -n "<search_phrase>" /home/claude/unpacked/word/document.xml | head -10
+grep -n "<search_phrase>" <workdir>/unpacked/word/document.xml | head -10
 ```
 Use 4–6 distinctive words from the context snippet to locate the right paragraph.
  
@@ -114,19 +114,19 @@ Split the run at the word boundary, then wrap the old word in `<w:del>` and the 
 </w:ins>
 ```
  
-Copy the `<w:rPr>` from the original run into both del and ins runs. Use IDs starting at 9001 and incrementing for each change (check existing IDs first with `grep 'w:id=' unpacked/word/document.xml | tail -5`).
+Copy the `<w:rPr>` from the original run into both del and ins runs. Use IDs starting at 9001 and incrementing for each change (check existing IDs first with `grep 'w:id=' <workdir>/unpacked/word/document.xml | tail -5`).
  
 ### Inserting a Word comment (reviewable/manual issues)
 Use the `comment.py` script:
 ```bash
-python /home/claude/scripts/comment.py /home/claude/unpacked/ <id> "<Comment text>" --author "Claude"
+python <workdir>/scripts/comment.py <workdir>/unpacked/ <id> "<Comment text>" --author "Claude"
 ```
 Then add `<w:commentRangeStart>`, `<w:commentRangeEnd>`, and `<w:commentReference>` markers as siblings of `<w:r>` in the relevant paragraph (never inside `<w:r>`).
  
 ### Repacking after every fix
 ```bash
-python /home/claude/scripts/office/pack.py /home/claude/unpacked/ /home/claude/spa_fixed.docx --original /home/claude/spa.docx
-cp /home/claude/spa_fixed.docx /mnt/user-data/outputs/<original_filename>
+python <workdir>/scripts/office/pack.py <workdir>/unpacked/ <workdir>/document_fixed.docx --original <workdir>/document.docx
+cp <workdir>/document_fixed.docx <outputs_dir>/<original_filename>
 ```
  
 Then call `present_files` with the output path and confirm to the user which issue was fixed and that it appears as a tracked change in the document.
@@ -253,7 +253,7 @@ h1, h2, h3, .heading { font-family: 'Poppins', sans-serif; }
  
 - If Definely upload fails (404 on prepare), re-upload and retry once before reporting the error.
 - If definely tool to get the proofread issues in a section returns 0 issues, confirm to the user that this clause is clean.
-- If the docx unpack/pack fails, check that the file path is correct and the docx scripts are available at `/mnt/skills/public/docx/scripts/`.
+- If the docx unpack/pack fails, check that the file path is correct and the docx scripts are available at `<docx_scripts_dir>`.
 - If a `str_replace` fails (string not found), use `grep` to find the actual text and adjust the search string.
 - If `w:id` conflicts occur on repack, find the highest existing ID in the document and increment from there.
  

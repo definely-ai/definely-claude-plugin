@@ -1,11 +1,11 @@
 ---
 name: definely-issues-list
-description: "Generate a formatted Issues List as a Microsoft Word (.docx) file from a contract or agreement, using Definely to extract tracked changes and mark-up. Use this skill whenever the user asks to: prepare an issues list, create an issues list in Word, generate a negotiation tracker, summarise seller/buyer/counterparty mark-up into a table, or produce a Word document from a Definely issues report. Can be used even if the user just says \"issues list\", \"prepare the issues list\", \"generate issues list from this document\", or \"Word issues list\" — with or without specifying column names or party labels of the table. Always use this skill when a .docx issues list output is requested and a document upload is present."
+description: "Generate a formatted Issues List as a Microsoft Word (.docx) file from a contract or agreement. Issues list is generated using Definely tools to extract tracked changes, comments and mark-up. Use this skill whenever the user asks to: prepare an issues list, create an issues list in Word, generate a negotiation tracker, summarise seller/buyer/counterparty mark-up into a table, or produce a Word document from a Definely issues report. Can be used even if the user just says \"issues list\", \"prepare the issues list\", \"generate issues list from this document\", or \"Word issues list\" 
 ---
  
 # Definely Issues List → Word (.docx)
  
-You are generating a branded Microsoft Word issues list from a contract document. The workflow has three stages: upload to Definely, extract issues, then build the Word file.
+You are generating a branded Microsoft Word issues list from a contract document. The workflow has three stages: upload to Definely, extract issues list using Definely tools, then present it in a Word file.
  
 ---
 
@@ -158,7 +158,7 @@ Separated from body by a Blue Tint 2 top border.
 Save the file as `[Matter]_Issues_List.docx` (derive the matter name from
 the document filename or the user's prompt).
  
-Copy to `/mnt/user-data/outputs/` and call `present_files`.
+Copy to `<outputs_dir>` and call `present_files`.
  
 After presenting, give the user a brief summary: total issue count and
 clause areas covered. Keep it to 2–3 sentences.
